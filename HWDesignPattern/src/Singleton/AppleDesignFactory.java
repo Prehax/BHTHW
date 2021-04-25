@@ -1,6 +1,4 @@
-package design;
-
-import javax.swing.*;
+package Singleton;
 
 public class AppleDesignFactory {
     static AppleDesignFactory instance;

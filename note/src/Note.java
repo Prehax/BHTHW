@@ -1,3 +1,4 @@
+import javax.print.attribute.standard.Media;
 import java.util.*;
 
 public class Note {
@@ -68,3 +69,108 @@ class Singleton {
         return getInstance();
     }
 }
+
+//Factory
+abstract class Phone {
+    public abstract Phone makePhones();
+}
+
+class Iphone extends Phone {
+
+    @Override
+    public Phone makePhones() {
+        return this;
+    }
+}
+
+class Samsung extends Phone {
+
+    @Override
+    public Phone makePhones() {
+        return this;
+    }
+}
+
+class PhoneFactory {
+    public static Phone getPhone(String brand) {
+        if ("iphone".equals(brand)) {
+            Phone iphone = new Iphone();
+            return iphone.makePhones();
+        }
+
+        if ("Sansumg".equals(brand)) {
+            Phone samsung = new Samsung();
+            return samsung.makePhones();
+        }
+
+        return null;
+    }
+}
+
+// Observer
+abstract class MediaCompany{
+    protected News news;
+    public abstract void update();
+}
+
+class CNN extends MediaCompany {
+    public CNN(News news) {
+        this.news = news;
+        this.news.addObservers(this);
+    }
+
+    @Override
+    public void update() {
+        System.out.println("CNN");
+    }
+}
+
+class FOX extends MediaCompany {
+    public FOX(News news) {
+        this.news = news;
+        this.news.addObservers(this);
+    }
+
+    @Override
+    public void update() {
+        System.out.println("FOX");
+    }
+}
+
+class NBA extends MediaCompany {
+    public NBA(News news) {
+        this.news = news;
+        this.news.addObservers(this);
+    }
+
+    @Override
+    public void update() {
+        System.out.println("NBA");
+    }
+}
+
+class News {
+    private final List<MediaCompany> observers = new ArrayList<>();
+    private String subject;
+
+    public String getSubject() {
+        return this.subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+        notifyAllObservers();
+    }
+
+    public void addObservers(MediaCompany observer) {
+        observers.add(observer);
+    }
+
+    public void notifyAllObservers() {
+        for (MediaCompany ob: observers) {
+            ob.update();
+        }
+    }
+}
+
+
