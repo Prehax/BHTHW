@@ -20,3 +20,11 @@ public class Main {
         p.printStatus();
     }
 }
+
+
+/*
+[Car{12345}]
+[Car{12345}, Car{44322}, Car{11452}, Car{87766}]
+[Car{44322}, Car{11452}, Car{87766}]
+[Car{11452}, Car{87766}]
+ */
