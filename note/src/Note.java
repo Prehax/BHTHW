@@ -1,4 +1,3 @@
-import javax.print.attribute.standard.Media;
 import java.util.*;
 
 public class Note {
@@ -170,6 +169,18 @@ class News {
         for (MediaCompany ob: observers) {
             ob.update();
         }
+    }
+}
+
+// Create a Thread
+
+class A extends Thread {}
+
+class B implements Runnable {
+
+    @Override
+    public void run() {
+
     }
 }
 
