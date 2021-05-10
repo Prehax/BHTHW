@@ -11,7 +11,10 @@ public class MVC {
 >password:
 //专门用来表示这个类是做REST处理的
 @Controller
+//在一开始加上这个路径 /user
 @RequestMapping(value = "/user")
+
+
 public class UserController {
 
     //拿到数据
@@ -24,7 +27,7 @@ public class UserController {
 
     //凡是通过箱子传的数据， 通通用POST， 因为GET只能通过URL传
     @RequestMapping(value="/login", method = RequestMethod.POST)
-    可以被替换为GetMapping, PutMapping, PostMapping, DeleteMapping
+    // 可以被替换为GetMapping, PutMapping, PostMapping, DeleteMapping
     public User login(@RequestHeader("timestamp") TimeStamp time,
                       @RequestBody LoginUser loginUser) {
         return service.getLoginUser(name, password);
